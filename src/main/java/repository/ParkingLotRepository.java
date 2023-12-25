@@ -12,18 +12,18 @@ public class ParkingLotRepository {
     private Map<Long, ParkingLot> parkingLotMap;
     private Map<Gate, ParkingLot> gateParkingLotMap;
 
-    ParkingLotRepository(){
+    public ParkingLotRepository(){
         this.parkingLotMap = new HashMap<>();
         this.gateParkingLotMap = new HashMap<>();
     }
 
-    public ParkingLot save(ParkingLot parkingLot) throws ParkingLotAlreadyExistsException {
+    public ParkingLot save(ParkingLot parkingLot) throws ParkingLotAlreadyExistsException, ParkingLotNotAvailableException {
         if(parkingLotMap.containsKey(parkingLot.getId())){
             throw new ParkingLotAlreadyExistsException();
         }
         for(Gate gate: parkingLot.getGates()){
             // todo:
-//            getParkingLotFromGate().setGates(gate);
+//            getParkingLotFromGate(gate).setGates(gate);
         }
         return parkingLotMap.put(parkingLot.getId(),parkingLot);
     }

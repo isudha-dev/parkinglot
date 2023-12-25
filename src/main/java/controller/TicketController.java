@@ -16,9 +16,9 @@ public class TicketController {
 
     public GenerateTicketResponseDTO getTicket(GenerateTicketRequestDTO generateTicketRequestDTO) throws ParkingLotNotAvailableException, ParkingSpotNotAvailable {
         Ticket ticket = ticketService.getTicket(generateTicketRequestDTO.getVehicle(), generateTicketRequestDTO.getEntryGate());
+
         GenerateTicketResponseDTO generateTicketResponseDTO = new GenerateTicketResponseDTO();
-//        generateTicketResponseDTO.ser
-        // todo
+        generateTicketResponseDTO.setTicket(ticket);
 
         return generateTicketResponseDTO;
 
